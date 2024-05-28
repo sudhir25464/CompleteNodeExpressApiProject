@@ -10,10 +10,16 @@ const getContacts =( req, res ) =>{
 // routes /api/contacts
 
 const CreateContact = ( req, res ) =>{
-    console.log("This is server data ",req.body);
+    
+   
+    const {name, email, phone} = req.body;
+    if(!name || !email || !phone){
+       res.status(400);
+       throw new Error("All fields are require ");
+    }
     res.status(201).json( {message : "Create new Contact"});
 
-} 
+} ;
 
 // get contacts
 // routes /api/contacts/:id
